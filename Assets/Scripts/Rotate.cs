@@ -5,16 +5,29 @@ public class Rotate : MonoBehaviour
     //Nos va a permitir cambiar la velocidad de la rotacion en la ventana de Inspector
     [SerializeField]
     private float _rotateSpeed = 5;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [SerializeField]
+    private bool _isRotating = true;
+
+    public bool IsRotating
     {
-        
+        get{return _isRotating;}
+        set{_isRotating = value;}
     }
 
-    // Update is called once per frame
-    //Le da la iindicacion al objeto, manda a llamar al objeto, los valores de transformacion, especificando que va a ser la rotacion
+
     void Update()
     {
-        gameObject.transform.Rotate(0f, _rotateSpeed*Time.deltaTime,0f);
+        RotateWeapon();
+    }
+
+    //Le da la iindicacion al objeto, manda a llamar al objeto, los valores de transformacion, especificando que va a ser la rotacion
+    private void RotateWeapon()
+    {
+        if(_isRotating)
+        {
+            gameObject.transform.Rotate(0f, _rotateSpeed*Time.deltaTime,0f);
+
+        }
     }
 }
