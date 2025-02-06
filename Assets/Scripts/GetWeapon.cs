@@ -13,6 +13,16 @@ public class GetWeapon : MonoBehaviour
     [SerializeField]
     private Transform _gunPivot;
 
+//Activa y desactiva la imagen de la bala
+    private UIController _uiController;
+
+    private void Start()
+    {
+        _uiController = gameObject.GetComponent<UIController>();
+        _uiController.ShowBulletsUI(false);
+    }
+    // -
+
     //Si choca con un trigger y su Tag es Weapon, va a desactivar el objeto
     void OnTriggerEnter(Collider other)
     {
@@ -21,8 +31,7 @@ public class GetWeapon : MonoBehaviour
             GrabWeapon(other.transform);
         }
 
-    }
-   
+    }  
    private void GrabWeapon(Transform weapon)
    {
         weapon.GetComponent<Rotate>().IsRotating = false;
@@ -31,6 +40,15 @@ public class GetWeapon : MonoBehaviour
         weapon.localPosition = Vector3.zero;
         weapon.localRotation = Quaternion.identity;
         _weapon = weapon.GetComponent<Gun>();
-        _weapon.PickUpWeapon();
+        _weapon.PickUpWeapon(this);
+        gameObject.GetComponent<UIController>().ShowBulletsUI(true);
+   }
+
+   public void RemoveWeapon()
+   {
+    Destroy(_weapon.gameObject);
+    _weapon = null;
+    gameObject.GetComponent<UIController>().ShowBulletsUI(false);
+
    }
 }
