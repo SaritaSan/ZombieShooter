@@ -29,6 +29,7 @@ public class GetWeapon : MonoBehaviour
         if(other.CompareTag("Weapon") && _weapon == null)
         {
             GrabWeapon(other.transform);
+
         }
 
     }  
