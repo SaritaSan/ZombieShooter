@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
             health.TakeDamage(1);
             Vector3 pushDirection = (transform.position - collision.transform.position).normalized;
             transform.position += pushDirection * 0.5f;
+            SoundManager.instance.Play("Golpe");
+
         }
         else if(collision.gameObject.gameObject.CompareTag("Key"))
         {

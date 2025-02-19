@@ -11,8 +11,6 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Text _bulletsText;
 
-    [SerializeField]
-    private GameObject _mira;
 
     public Text BulletsText
     {
@@ -33,7 +31,6 @@ public class UIController : MonoBehaviour
         ShowBulletsUI(false);
         ShowGameOverUI(false);
         ShowWinUI(false);
-        ShowMiraUI(false);
     }
 
 
@@ -52,8 +49,4 @@ public class UIController : MonoBehaviour
         _winUI.SetActive(show);
     }
 
-    public void ShowMiraUI(bool show)
-    {
-        _mira.SetActive(show);
-    }
 }
